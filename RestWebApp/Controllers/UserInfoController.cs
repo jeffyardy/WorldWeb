@@ -73,6 +73,7 @@ namespace RestWebApp.Controllers
             }
             if(UserInfo._user.Token != null)
             {
+                HttpContext.Session.SetString("userId", UserInfo._user.UserId);
                 HttpContext.Session.SetString("JWToken", UserInfo._user.Token);
             }
             return RedirectToAction("Authors", "Author");

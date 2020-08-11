@@ -27,8 +27,12 @@ namespace RestWebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddMvc();
             services.AddMvc().AddSessionStateTempDataProvider();
             services.AddSession();
+            //services.AddSession(options => {
+            //    options.IdleTimeout = TimeSpan.FromMinutes(30);
+            //});
             services.AddAuthentication(options =>
             {
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -47,7 +51,6 @@ namespace RestWebApp
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-           
 
             if (env.IsDevelopment())
             {
@@ -73,7 +76,7 @@ namespace RestWebApp
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=UserInfo}/{action=login}/{id?}");
+                    pattern: "{controller=UserInfo}/{action=Login}/{id?}");
             });
         }
     }
