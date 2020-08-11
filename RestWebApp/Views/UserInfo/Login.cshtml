@@ -1,0 +1,26 @@
+﻿@model RestWebApp.Models.User
+@{
+    ViewData["Title"] = "Login";
+}
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<h1>Login</h1>
+<form asp-controller="UserInfo" asp-action="Login" method="post">
+    <div class="form-group">
+        <div class="form-group centerlook">
+            <label asp-for="UserId">User ID</label>
+        </div>
+        <div>
+            <input asp-for="UserId" ng-model="userid" required />
+        </div>
+        <div>
+            <label asp-for="Password">Password</label>
+        </div>
+        <div>
+            <input asp-for="Password" ng-model="password" required />
+        </div>
+        <br />
+        <input type="submit" value="Validate User" class="btn btn-sm btn-primary" />
+    </div>
+</form>
+
+
